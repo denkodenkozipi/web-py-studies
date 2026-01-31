@@ -4,10 +4,10 @@ from fastapi import FastAPI
 app = FastAPI()
 
 users = [
-    User(name="John Doe", id=1,),
-    User(name="Barbara Dey", id=2,),
-    User(name="Leni Bibi", id=3,),
-    User(name="Tzar Ivan", id=4,),
+    User(name="John Doe", age=19),
+    User(name="Barbara Dey", age=22),
+    User(name="Leni Bibi", age=32),
+    User(name="Tzar Ivan", age=197),
 ]
 @app.get("/users")
 def read_root():
