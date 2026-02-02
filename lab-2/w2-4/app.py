@@ -15,7 +15,7 @@ feedbacks = [
     FeedBack(name="Ada Lovelace", message="Your site runs smoother than my analytical engine on a good day!"),
     FeedBack(name="Linus Torvalds", message="Why does the UI feel like a kernel panic? Debug it, please!"),
     FeedBack(name="Grace Hopper", message="Excellent! It’s as user‑friendly as a COBOL compiler with good documentation."),
-    FeedBack(name="Guido van Rossum", message="Indentation is fine, but the layout could use a bit more Pythonic elegance.")
+    FeedBack(name="Guido van Rossum", message="Indentation is fine, but the layout could use a bit more Pythonic elegance."),
 ]
 
 
@@ -27,11 +27,11 @@ def get_all_users():
     }
 
 
-@app.post("/user/")
+@app.post("/user")
 async def create_user(user: User):
     users.append(user)
     return {
-        "message": "successfully!",
+        "message": "user created successfully!",
         "user": user,
     }
 
@@ -47,6 +47,5 @@ def get_all_feedbacks():
 async def submit_feedback(feedback: FeedBack):
     feedbacks.append(feedback)
     return {
-        'message': 'successfully',
-        "feedback": feedback,
+        "message": f"Thank you, {feedback.name}! Your feedback has been saved."
     }
