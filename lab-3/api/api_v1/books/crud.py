@@ -26,9 +26,11 @@ BOOKS_DATABASE = [
     ),
 ]
 
+
 def get_all_books():
     """Get all books"""
     return BOOKS_DATABASE
+
 
 def get_book_by_id(book_id: int):
     """Get a book by its id"""
