@@ -22,7 +22,7 @@ MOVIES_DATABASE = [
         slug="mv-3",
         rating=4.3,
         year=2001,
-    )
+    ),
 ]
 
 
