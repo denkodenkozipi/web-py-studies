@@ -1,0 +1,20 @@
+.vscode/
+.venv/
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Шедевро Jetbrains
+.idea/
+# Default ignored files
+.idea/shelf/
+.idea/workspace.xml
+# Editor-based HTTP Client requests
+.idea/httpRequests/
+# Ignored default folder with query files
+.idea/queries/
+# Datasource local storage ignored files
+.idea/dataSources/
+.idea/dataSources.local.xml
