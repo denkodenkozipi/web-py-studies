@@ -25,6 +25,7 @@ class BookUpdate(BookBase):
 class BookTemplate(BookBase):
     """Ready model for crud operations """
 
+
 def validate_book_id(book_id: int = Path(..., description="The Book ID")):
     """Validates The Book ID"""
     from .crud import get_book_by_id
