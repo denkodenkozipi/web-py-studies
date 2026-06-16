@@ -1,6 +1,6 @@
 """This module provides CRUD operations for Book"""
 
-from .dependencies import BookTemplate
+from .schemas import BookTemplate
 
 BOOKS_DATABASE = [
     BookTemplate(

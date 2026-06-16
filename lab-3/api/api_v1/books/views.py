@@ -1,9 +1,8 @@
 """Book endpoints"""
 from fastapi import APIRouter, Depends
 from .crud import get_all_books
-from .dependencies import validate_book_id, BookTemplate
-
-from books.dependencies import BookTemplate
+from .dependencies import validate_book_id
+from .schemas import BookTemplate
 
 router = APIRouter(prefix="/books", tags=["Books"])
 

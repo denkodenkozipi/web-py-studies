@@ -1,5 +1,5 @@
 """This module provides CRUD operations for Movies"""
-from .dependencies import MovieTemplate
+from .schemas import MovieTemplate
 
 MOVIES_DATABASE = [
     MovieTemplate(

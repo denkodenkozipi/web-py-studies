@@ -2,7 +2,8 @@
 
 from fastapi import APIRouter, Depends
 from .crud import get_all_movies
-from .dependencies import validate_movie_id, MovieTemplate
+from .dependencies import validate_movie_id
+from .schemas import MovieTemplate
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
