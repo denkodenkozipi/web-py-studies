@@ -28,6 +28,6 @@ def read_movie_by_id(movie: MovieResponse = Depends(validate_movie_id)):
 
 
 @router.get("/{slug}", response_model=MovieResponse)
-def read_mobie_by_slug(slug: str):
+def read_movie_by_slug(slug: str):
     """get a movie by its slug"""
     return StorageMovie.get_by_slug(slug)
