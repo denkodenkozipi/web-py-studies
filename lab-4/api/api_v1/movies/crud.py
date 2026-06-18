@@ -1,22 +1,22 @@
 """This module provides CRUD operations for Movies"""
-from .schemas import MovieTemplate
+from .schemas import MovieResponse
 
 MOVIES_DATABASE = [
-    MovieTemplate(
+    MovieResponse(
         id=1,
         title="Movie 1",
         slug="mv-1",
         rating=2.5,
         year=2020,
     ),
-    MovieTemplate(
+    MovieResponse(
         id=2,
         title="Movie 2",
         slug="mv-2",
         rating=4.5,
         year=1993,
     ),
-    MovieTemplate(
+    MovieResponse(
         id=3,
         title="Movie 3",
         slug="mv-3",

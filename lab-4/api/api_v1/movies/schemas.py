@@ -1,26 +1,22 @@
 """ Movie model """
-
-from typing import Annotated
-from annotated_types import MinLen, MaxLen, Ge, Le
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class MovieBase(BaseModel):
-    """ Template Movie model for crud operations """
-    id: int
-    title: str
-    slug: str
-    rating: float
-    year: int
+    """ Base Movie model with common fields """
+    title: str = Field(..., description="Movie title")
+    rating: float = Field(..., description="Movie rating", ge=0.00, le=5.00)
+    year: int = Field(..., description="Movie year released", ge=1895, le=2030)
+    description: str | None = Field(default=None, description="Movie description")
 
 
-class MovieUpdate(MovieBase):
-    """ Annotated Movie model for crud operations """
-    title: Annotated[str, MinLen(3), MaxLen(30)]
-    slug: Annotated[str, MinLen(3), MaxLen(10)]
-    rating: Annotated[float, Ge(0.00), Le(5.00)]
-    year: Annotated[int, Ge(1895), Le(2030)]
+class MovieCreate(MovieBase):
+    """Model for creating new movies in the database"""
+    pass
 
 
-class MovieTemplate(MovieBase):
-    """Ready model for crud operations """
+class MovieResponse(MovieBase):
+    """Response schema for a single movie with slug identifier"""
+    slug: str = Field(..., description="Specific movie slug")
+
+    model_config = {"from_attributes": True}
