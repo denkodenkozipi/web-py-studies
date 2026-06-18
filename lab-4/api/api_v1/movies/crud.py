@@ -4,23 +4,23 @@ from .schemas import MovieResponse, MovieCreate
 from fastapi import HTTPException, status
 
 
-class Storage:
+class StorageMovie:
     """Class for storing storage related operations"""
     _id_counter = 2
 
     _storage: dict[str, MovieResponse] = {
-        "harrypotter-2002": MovieResponse(
+        "harry-potter-2002": MovieResponse(
             id=1,
             title="Harry Potter",
-            slug="harrypotter-2002",
+            slug="harry-potter-2002",
             rating=4.9,
             year=2002,
             description="Some description",
         ),
-        "lordsofthering-2000": MovieResponse(
+        "lords-of-the-ring-2000": MovieResponse(
             id=2,
             title="Lord's of the ring",
-            slug="lordsofthering-2000",
+            slug="lords-of-the-ring-2000",
             rating=4.7,
             year=2000,
             description="Some description",
