@@ -18,5 +18,6 @@ class MovieCreate(MovieBase):
 class MovieResponse(MovieBase):
     """Response schema for a single movie with slug identifier"""
     slug: str = Field(..., description="Specific movie slug")
+    id: int = Field(..., description="Specific movie id")
 
     model_config = {"from_attributes": True}
