@@ -1,6 +1,5 @@
 """This module provides CRUD operations for Book"""
 
-
 from .schemas import BookResponse, BookCreate
 from fastapi import HTTPException, status
 

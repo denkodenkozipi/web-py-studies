@@ -10,9 +10,11 @@ class BookBase(BaseModel):
     year: int = Field(..., description="Year of the book", le=2030)
     description: str | None = Field(default=None, description="Book description")
 
+
 class BookCreate(BookBase):
     """Model for creating new book in the database"""
     pass
+
 
 class BookResponse(BookBase):
     """Response model for a single book with common identifier"""
