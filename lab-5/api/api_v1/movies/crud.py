@@ -1,6 +1,6 @@
 """This module provides CRUD operations for Movies"""
 
-from .schemas import MovieResponse, MovieCreate
+from .schemas import MovieResponse, MovieCreate, MovieUpdate
 from fastapi import HTTPException, status
 
 
@@ -108,3 +108,27 @@ class StorageMovie:
                 detail=f"Movie with slug '{slug}' does not exist",
             )
         return movie
+
+    @classmethod
+    def update(cls, current_movie: MovieResponse, movie_in: MovieUpdate) -> MovieResponse:
+        """ Update a movie completely (PUT) """
+        slug_title = movie_in.title.lower().replace("'", "").replace(" ", "-")
+        new_slug = f"{slug_title}-{movie_in.year}"
+
+        if new_slug != current_movie.slug and new_slug in cls._storage:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Movie with slug '{new_slug}' already exists",
+            )
+
+        if new_slug != current_movie.slug:
+            cls._storage.pop(current_movie.slug, None)
+
+            current_movie.title = movie_in.title
+            current_movie.rating = movie_in.rating
+            current_movie.year = movie_in.year
+            current_movie.description = movie_in.description
+            current_movie.slug = new_slug
+
+            cls._storage[new_slug] = current_movie
+            return current_movie

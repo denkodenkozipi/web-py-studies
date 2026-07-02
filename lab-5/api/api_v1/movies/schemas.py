@@ -21,3 +21,8 @@ class MovieResponse(MovieBase):
     id: int = Field(..., description="Specific movie id")
 
     model_config = {"from_attributes": True}
+
+
+class MovieUpdate(MovieBase):
+    """Model for updating an existing movie completely via PUT """
+    pass
