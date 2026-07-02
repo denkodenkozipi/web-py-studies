@@ -3,6 +3,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional
 
+
 class BookBase(BaseModel):
     """Base Book model with common fields"""
     title: str = Field(..., description="Title of the book")
@@ -23,9 +24,11 @@ class BookResponse(BookBase):
 
     model_config = {"from_attributes": True}
 
+
 class BookUpdate(BookBase):
     """ Mobel for updating an existing book completely via PUT """
     pass
+
 
 class BookPatch(BaseModel):
     """ Model for updating an existing movie partially via PATCH """

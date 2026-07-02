@@ -2,6 +2,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional
 
+
 class MovieBase(BaseModel):
     """ Base Movie model with common fields """
     title: str = Field(..., description="Movie title")

@@ -3,6 +3,7 @@ from .crud import MovieResponse, StorageMovie, MovieCreate
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
+
 @router.get("/", response_model=list[MovieResponse])
 def read_all_movies():
     """get all movies from storage"""
@@ -13,4 +14,3 @@ def read_all_movies():
 def create_movie(movie_in: MovieCreate):
     """create a new movie in storage"""
     return StorageMovie.create(movie_in)
-
