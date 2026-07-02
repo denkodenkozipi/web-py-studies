@@ -1,7 +1,7 @@
 """Book model"""
 
 from pydantic import BaseModel, Field
-
+from typing import Optional
 
 class BookBase(BaseModel):
     """Base Book model with common fields"""
@@ -22,3 +22,14 @@ class BookResponse(BookBase):
     id: int = Field(..., description="Specific id of the book")
 
     model_config = {"from_attributes": True}
+
+class BookUpdate(BookBase):
+    """ Mobel for updating an existing book completely via PUT """
+    pass
+
+class BookPatch(BaseModel):
+    """ Model for updating an existing movie partially via PATCH """
+    title: Optional[str] = None
+    pages: Optional[int] = None
+    year: Optional[int] = None
+    description: Optional[str] = None

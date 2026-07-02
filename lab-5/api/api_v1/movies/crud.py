@@ -124,14 +124,14 @@ class StorageMovie:
         if new_slug != current_movie.slug:
             cls._storage.pop(current_movie.slug, None)
 
-            current_movie.title = movie_in.title
-            current_movie.rating = movie_in.rating
-            current_movie.year = movie_in.year
-            current_movie.description = movie_in.description
-            current_movie.slug = new_slug
+        current_movie.title = movie_in.title
+        current_movie.rating = movie_in.rating
+        current_movie.year = movie_in.year
+        current_movie.description = movie_in.description
+        current_movie.slug = new_slug
 
-            cls._storage[new_slug] = current_movie
-            return current_movie
+        cls._storage[new_slug] = current_movie
+        return current_movie
 
     @classmethod
     def patch(cls, current_movie: MovieResponse, movie_in: MoviePatch) -> MovieResponse:
