@@ -8,6 +8,17 @@ from .schemas import MovieResponse, MovieCreate
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
+responses_404 = {
+    status.HTTP_404_NOT_FOUND: {
+        "description": "Movie not found",
+        "content": {
+            "application/json": {
+                "example": {"detail": "Movie does not exist"}
+            }
+        },
+    }
+}
+
 
 @router.get("/", response_model=list[MovieResponse])
 def read_all_movies():
@@ -33,13 +44,15 @@ def read_movie_by_slug(slug: str):
     return StorageMovie.get_by_slug(slug)
 
 
-@router.delete("/id/{id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/id/{id}", status_code=status.HTTP_204_NO_CONTENT, responses=responses_404)
 def delete_movie_by_id(id: int):
     """delete a movie by its id"""
-    return StorageMovie.delete_by_id(id)
+    StorageMovie.delete_by_id(id)
+    return None
 
 
-@router.delete("/{slug}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{slug}", status_code=status.HTTP_204_NO_CONTENT, responses=responses_404)
 def delete_movie_by_slug(slug: str):
     """delete a movie by its slug"""
-    return StorageMovie.delete_by_slug(slug)
+    StorageMovie.delete_by_slug(slug)
+    return None
