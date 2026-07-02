@@ -30,7 +30,7 @@ class StorageMovie:
 
     @classmethod
     def get_all(cls) -> list[MovieResponse]:
-        """ Get all movies"""
+        """ Get all movies """
         return list(cls._storage.values())
 
     @classmethod
@@ -83,3 +83,28 @@ class StorageMovie:
 
         cls._storage[generated_slug] = new_movie
         return new_movie
+
+    @classmethod
+    def delete_by_id(cls, movie_id: int) -> MovieResponse:
+        """ Delete movie by id or raise 404"""
+        for slug, movie in cls._storage.items():
+            if movie.id == movie_id:
+                del cls._storage[slug]
+                return movie
+
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Movie with id '{movie_id}' does not exist",
+        )
+
+    @classmethod
+    def delete_by_slug(cls, slug: str) -> MovieResponse:
+        """ Delete movie by slug or raise 404"""
+        movie = cls._storage.pop(slug, None)
+
+        if not movie:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Movie with slug '{slug}' does not exist",
+            )
+        return movie

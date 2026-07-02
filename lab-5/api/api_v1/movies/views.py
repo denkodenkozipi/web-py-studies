@@ -31,3 +31,15 @@ def read_movie_by_id(movie: MovieResponse = Depends(validate_movie_id)):
 def read_movie_by_slug(slug: str):
     """get a movie by its slug"""
     return StorageMovie.get_by_slug(slug)
+
+
+@router.delete("/id/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_movie_by_id(id: int):
+    """delete a movie by its id"""
+    return StorageMovie.delete_by_id(id)
+
+
+@router.delete("/{slug}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_movie_by_slug(slug: str):
+    """delete a movie by its slug"""
+    return StorageMovie.delete_by_slug(slug)
