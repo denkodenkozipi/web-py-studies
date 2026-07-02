@@ -1,6 +1,6 @@
 """ Movie model """
 from pydantic import BaseModel, Field
-
+from typing import Optional
 
 class MovieBase(BaseModel):
     """ Base Movie model with common fields """
@@ -26,3 +26,11 @@ class MovieResponse(MovieBase):
 class MovieUpdate(MovieBase):
     """Model for updating an existing movie completely via PUT """
     pass
+
+
+class MoviePatch(MovieBase):
+    """ Model for updating an existing movie partially via PATCH """
+    title: Optional[str] = None
+    rating: Optional[float] = None
+    year: Optional[int] = None
+    description: Optional[str] = None
